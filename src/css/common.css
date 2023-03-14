@@ -16,3 +16,33 @@ img {
   display: block;
   max-width: 100%;
 }
+
+.btn-box {
+  display: flex;
+  justify-content: center;
+  padding-top: 200px;
+}
+.btn-switcher {
+  display: inline-block;
+  padding: 15px 30px;
+  margin: 10px 20px;
+  font-size: 24px;
+  letter-spacing: 2px;
+  font-weight: bold;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 0 40px 40px #9999ff inset, 0 0 0 0 #9999ff;
+  transition: box-shadow .15s ease-in-out;
+  cursor: pointer;
+}
+.btn-switcher:hover {
+  box-shadow: 0 0 10px 0 #3300ff inset, 0 0 10px 4px #3300ff;
+  color: #3300ff;
+}
+.btn-switcher:disabled {
+  box-shadow: 0 0 40px 40px #a5a4a5 inset, 0 0 0 0 #a5a4a5;
+  color: #ffffff;
+  cursor: not-allowed;
+}
+
