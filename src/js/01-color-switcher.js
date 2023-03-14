@@ -3,16 +3,23 @@ const stopBtn = document.querySelector('button[data-stop]');
 let intervalId = null;
 startBtn.addEventListener('click', onStartColorChangeBtnClick);
 stopBtn.addEventListener('click', onStopColorChangeBtnClick);
+// stopBtn.setAttribute('disabled', '');
+stopBtn.disabled = true;
 
 function onStartColorChangeBtnClick() {
   intervalId = setInterval(changeBodyColor, 1000);
-  startBtn.setAttribute('disabled', '');
+  startBtn.disabled = true;
+  stopBtn.disabled = false;
+  // stopBtn.removeAttribute('disabled');
 }
 
 function onStopColorChangeBtnClick() {
   clearInterval(intervalId);
   document.body.removeAttribute('style');
-  startBtn.removeAttribute('disabled');
+  startBtn.disabled = false;
+  stopBtn.disabled = true;
+  // startBtn.removeAttribute('disabled');
+  // stopBtn.setAttribute('disabled', '');
 }
 
 function changeBodyColor() {
