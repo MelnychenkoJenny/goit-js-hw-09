@@ -17,6 +17,7 @@ img {
   max-width: 100%;
 }
 
+/* color-switcher */
 .btn-box {
   display: flex;
   justify-content: center;
@@ -32,7 +33,7 @@ img {
   color: #ffffff;
   border: none;
   border-radius: 10px;
-  box-shadow: 0 0 40px 40px #9999ff inset, 0 0 0 0 #9999ff;
+  box-shadow: 0 0 40px 40px #6060e3 inset, 0 0 0 0 #6060e3;
   transition: box-shadow .15s ease-in-out;
   cursor: pointer;
 }
@@ -46,3 +47,22 @@ img {
   cursor: not-allowed;
 }
 
+/* timer */
+.timer-box {
+  font-size: 24px;
+  width: 350px;
+  margin: 0 auto;
+}
+.timer {
+  display: flex;
+  gap: 20px;
+}
+.field {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+ 
+}
+#datetime-picker {
+  font-size: 24px;
+}

@@ -15,7 +15,7 @@ function onStartColorChangeBtnClick() {
 
 function onStopColorChangeBtnClick() {
   clearInterval(intervalId);
-  document.body.removeAttribute('style');
+  // document.body.removeAttribute('style'); 
   startBtn.disabled = false;
   stopBtn.disabled = true;
   // startBtn.removeAttribute('disabled');
