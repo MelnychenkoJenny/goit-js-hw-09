@@ -1,16 +1,14 @@
 import flatpickr from 'flatpickr';
-import "flatpickr/dist/flatpickr.min.css";
+import 'flatpickr/dist/flatpickr.min.css';
 require('flatpickr/dist/themes/material_blue.css');
 import Notiflix from 'notiflix';
-
 
 const flatpickerInput = document.querySelector('#datetime-picker');
 const clockValueDay = document.querySelector('span[data-days]');
 const clockValueHour = document.querySelector('span[data-hours]');
 const clockValueMinute = document.querySelector('span[data-minutes]');
 const clockValueSecond = document.querySelector('span[data-seconds]');
-const startTimerBtn = document.querySelector('button[data-start]')
-
+const startTimerBtn = document.querySelector('button[data-start]');
 
 startTimerBtn.disabled = true;
 
@@ -22,23 +20,29 @@ const options = {
   minuteIncrement: 1,
   onClose([selectedDates]) {
     endTime = selectedDates.getTime();
-    if(endTime < Date.now()){
-        Notiflix.Notify.failure('Please choose a date in the future. Have a great day =)');
+    if (endTime < Date.now()) {
+      Notiflix.Notify.failure(
+        'Please choose a date in the future. Have a great day =)'
+      );
+    } else {
+      Notiflix.Notify.success(
+        'The correct date is selected. Rather click the button START to start the timer'
+      );
+      startTimerBtn.disabled = false;
     }
-    Notiflix.Notify.success('The correct date is selected. Rather click the button START to start the timer');
-    startTimerBtn.disabled = false;
+    
+    
   },
-  
 };
 
 flatpickr(flatpickerInput, options);
 
 const timer = {
-    intervalId: null,
-    isActive: false,
+  intervalId: null,
+  isActive: false,
   start() {
-    if(this.isActive) {
-        return;
+    if (this.isActive) {
+      return;
     }
     this.isActive = true;
     this.intervalId = setInterval(() => {
@@ -46,33 +50,28 @@ const timer = {
       const deltaTime = endTime - currentTime;
       const time = convertMs(deltaTime);
       updateTimer(time);
-      if(deltaTime<1000) {
+      if (deltaTime < 1000) {
         Notiflix.Report.success('Time achieved', '', 'Ok');
-        this.stop()
+        this.stop();
       }
-      
     }, 1000);
     startTimerBtn.disabled = true;
     flatpickerInput.disabled = true;
-
   },
   stop() {
     clearInterval(this.intervalId);
     this.isActive = false;
     startTimerBtn.disabled = true;
     flatpickerInput.disabled = false;
-    
-  }
- };
+  },
+};
 
- startTimerBtn.addEventListener('click', timer.start.bind(timer));
-function updateTimer({days, hours, minutes, seconds}) {
-    clockValueDay.textContent = days;
-    clockValueHour.textContent = hours;
-clockValueMinute.textContent = minutes;
-clockValueSecond.textContent = seconds;
-
-
+startTimerBtn.addEventListener('click', timer.start.bind(timer));
+function updateTimer({ days, hours, minutes, seconds }) {
+  clockValueDay.textContent = days;
+  clockValueHour.textContent = hours;
+  clockValueMinute.textContent = minutes;
+  clockValueSecond.textContent = seconds;
 }
 
 function convertMs(ms) {
@@ -99,5 +98,3 @@ function convertMs(ms) {
 function addLeadingZero(value) {
   return String(value).padStart(2, '0');
 }
-
-

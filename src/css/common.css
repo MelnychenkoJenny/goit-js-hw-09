@@ -9,6 +9,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #fafafa;
   color: #212121;
+  font-size: 24px;
   line-height: 1.5;
 }
 
@@ -18,51 +19,81 @@ img {
 }
 
 /* color-switcher */
-.btn-box {
+.container {
   display: flex;
   justify-content: center;
-  padding-top: 200px;
+  align-items: center;
+  padding-top: 30px;
+  gap: 30px;
 }
-.btn-switcher {
+.btn.switcher, .btn.datetime {
   display: inline-block;
   padding: 15px 30px;
-  margin: 10px 20px;
   font-size: 24px;
   letter-spacing: 2px;
   font-weight: bold;
   color: #ffffff;
+  text-transform: uppercase;
   border: none;
   border-radius: 10px;
-  box-shadow: 0 0 40px 40px #6060e3 inset, 0 0 0 0 #6060e3;
+  box-shadow: 0 0 40px 40px #42a5f5 inset, 0 0 0 0 #42a5f5;
   transition: box-shadow .15s ease-in-out;
   cursor: pointer;
 }
-.btn-switcher:hover {
-  box-shadow: 0 0 10px 0 #3300ff inset, 0 0 10px 4px #3300ff;
-  color: #3300ff;
+.btn.switcher:hover, .btn.datetime:hover {
+  box-shadow: 0 0 10px 0 #4a87ea inset, 0 0 10px 4px #4a87ea;
+  color: #4a87ea;
 }
-.btn-switcher:disabled {
+.btn.switcher:disabled, .btn.datetime:disabled {
   box-shadow: 0 0 40px 40px #a5a4a5 inset, 0 0 0 0 #a5a4a5;
   color: #ffffff;
   cursor: not-allowed;
 }
 
 /* timer */
-.timer-box {
-  font-size: 24px;
-  width: 350px;
-  margin: 0 auto;
+.container.timer {
+flex-direction: column;
 }
-.timer {
+.date-box {
+  max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.btn.datetime {
+  width: 100%;
+}
+.timer-calendar {
+  width: 200px;
+}
+.timer-value {
   display: flex;
-  gap: 20px;
+  gap: 30px;
+  max-width: 100%;
 }
 .field {
   display: flex;
   align-items: center;
   flex-direction: column;
- 
 }
-#datetime-picker {
+.field .value {
+  font-size: 50px;
+  font-weight: bold;
+  color:#42a5f5;
+}
+.field .label {
+  font-size: 20px;
+}
+
+.date-input {
+  width: 250px;
+  height: 40px;
   font-size: 24px;
+  text-align: center;
+  border-radius: 10px;
+  border: 2px solid #42a5f5;
+}
+.date-input:focus {
+  border: 2px solid #42a5f5;
+  outline: none;
 }
