@@ -10,7 +10,7 @@ const clockValueMinute = document.querySelector('span[data-minutes]');
 const clockValueSecond = document.querySelector('span[data-seconds]');
 const startTimerBtn = document.querySelector('button[data-start]');
 
-startTimerBtn.disabled = true;
+updateBtnDisabled(true);
 
 let endTime = null;
 const options = {
@@ -24,14 +24,14 @@ const options = {
       Notiflix.Notify.failure(
         'Please choose a date in the future. Have a great day =)'
       );
-    } else {
+      updateBtnDisabled(true);
+      return;
+    } 
+    
       Notiflix.Notify.success(
         'The correct date is selected. Rather click the button START to start the timer'
       );
-      startTimerBtn.disabled = false;
-    }
-    
-    
+      updateBtnDisabled(false);
   },
 };
 
@@ -55,14 +55,14 @@ const timer = {
         this.stop();
       }
     }, 1000);
-    startTimerBtn.disabled = true;
-    flatpickerInput.disabled = true;
+    updateBtnDisabled(true);
+    updateInputDisabled(true)
   },
   stop() {
     clearInterval(this.intervalId);
     this.isActive = false;
-    startTimerBtn.disabled = true;
-    flatpickerInput.disabled = false;
+    updateBtnDisabled(true);
+    updateInputDisabled(false)
   },
 };
 
@@ -72,6 +72,12 @@ function updateTimer({ days, hours, minutes, seconds }) {
   clockValueHour.textContent = hours;
   clockValueMinute.textContent = minutes;
   clockValueSecond.textContent = seconds;
+}
+function updateBtnDisabled(state) {
+  startTimerBtn.disabled = state;
+}
+function updateInputDisabled(state) {
+  flatpickerInput.disabled = state;
 }
 
 function convertMs(ms) {

@@ -4,20 +4,20 @@ let intervalId = null;
 startBtn.addEventListener('click', onStartColorChangeBtnClick);
 stopBtn.addEventListener('click', onStopColorChangeBtnClick);
 // stopBtn.setAttribute('disabled', '');
-stopBtn.disabled = true;
+updateBtnDisabled(stopBtn, true)
 
 function onStartColorChangeBtnClick() {
   intervalId = setInterval(changeBodyColor, 1000);
-  startBtn.disabled = true;
-  stopBtn.disabled = false;
+  updateBtnDisabled(startBtn, true)
+  updateBtnDisabled(stopBtn, false)
   // stopBtn.removeAttribute('disabled');
 }
 
 function onStopColorChangeBtnClick() {
   clearInterval(intervalId);
   // document.body.removeAttribute('style'); 
-  startBtn.disabled = false;
-  stopBtn.disabled = true;
+  updateBtnDisabled(startBtn, false)
+  updateBtnDisabled(stopBtn, true)
   // startBtn.removeAttribute('disabled');
   // stopBtn.setAttribute('disabled', '');
 }
@@ -27,4 +27,7 @@ function changeBodyColor() {
 }
 function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+}
+function updateBtnDisabled(btn, state) {
+  btn.disabled = state;
 }
