@@ -4,20 +4,20 @@ let intervalId = null;
 startBtn.addEventListener('click', onStartColorChangeBtnClick);
 stopBtn.addEventListener('click', onStopColorChangeBtnClick);
 // stopBtn.setAttribute('disabled', '');
-updateBtnDisabled(stopBtn, true)
+updateBtnDisabled(stopBtn, true);
 
 function onStartColorChangeBtnClick() {
   intervalId = setInterval(changeBodyColor, 1000);
-  updateBtnDisabled(startBtn, true)
-  updateBtnDisabled(stopBtn, false)
+  updateBtnDisabled(startBtn, true);
+  updateBtnDisabled(stopBtn, false);
   // stopBtn.removeAttribute('disabled');
 }
 
 function onStopColorChangeBtnClick() {
   clearInterval(intervalId);
-  // document.body.removeAttribute('style'); 
-  updateBtnDisabled(startBtn, false)
-  updateBtnDisabled(stopBtn, true)
+  // document.body.removeAttribute('style');
+  updateBtnDisabled(startBtn, false);
+  updateBtnDisabled(stopBtn, true);
   // startBtn.removeAttribute('disabled');
   // stopBtn.setAttribute('disabled', '');
 }

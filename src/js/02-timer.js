@@ -26,12 +26,12 @@ const options = {
       );
       updateBtnDisabled(true);
       return;
-    } 
-    
-      Notiflix.Notify.success(
-        'The correct date is selected. Rather click the button START to start the timer'
-      );
-      updateBtnDisabled(false);
+    }
+
+    Notiflix.Notify.success(
+      'The correct date is selected. Rather click the button START to start the timer'
+    );
+    updateBtnDisabled(false);
   },
 };
 
@@ -56,13 +56,13 @@ const timer = {
       }
     }, 1000);
     updateBtnDisabled(true);
-    updateInputDisabled(true)
+    updateInputDisabled(true);
   },
   stop() {
     clearInterval(this.intervalId);
     this.isActive = false;
     updateBtnDisabled(true);
-    updateInputDisabled(false)
+    updateInputDisabled(false);
   },
 };
 
